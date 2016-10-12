@@ -1,0 +1,30 @@
+<p>
+    <a href="#/">Back to Search</a>
+</p>
+
+Forecast for {{ city }}
+
+<hr />
+Days: <a href="#/forecast/3" ng-class="{ 'bg-primary': days === '3'}">3</a> | <a href="#/forecast/5" ng-class="{ 'bg-primary': days === '5'}">5</a> | <a href="#/forecast/7" ng-class="{ 'bg-primary': days === '7'}">7</a>
+
+<hr />
+
+<div ng-repeat="w in weatherResult.list">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ convertToDate(w.dt) | date: 'MMM d, y' }}</h3>
+                </div>
+                <div class="panel-body">
+                    Daytime temperature: {{ convertToFahrenheit(w.temp.day) }}
+                    <img src="pictures/sunny.png" ng-show="convertToFahrenheit(w.temp.day) >= 76" height="22" width="22">
+                    <img src="pictures/partlyCloudy.png" ng-show="convertToFahrenheit(w.temp.day) <= 75 && convertToFahrenheit(w.temp.day) >= 68" height="22" width="22">
+                    <img src="pictures/cloudy.png" ng-show="convertToFahrenheit(w.temp.day) <= 67 && convertToFahrenheit(w.temp.day) >= 57" height="22" width="22">
+                    <img src="pictures/snowy.png" ng-show="convertToFahrenheit(w.temp.day) <= 56" height="22" width="22">
+        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
